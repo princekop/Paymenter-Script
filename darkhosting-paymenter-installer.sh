@@ -164,34 +164,9 @@ EOL
 
 function create_admin_user() {
     print_step 6 "Creating admin user"
-    echo -e "${GREEN}👤 Let's create an admin user for Paymenter${NC}"
-    echo -e "${CYAN}Please provide the following information:${NC}"
-    
-    read -p "Enter admin email: " admin_email
-    read -p "Enter admin username: " admin_username
-    read -sp "Enter admin password: " admin_password
-    echo ""
-    read -sp "Confirm admin password: " admin_password_confirm
-    echo ""
-
-    if [ "$admin_password" != "$admin_password_confirm" ]; then
-        echo -e "${RED}❌ Passwords do not match. Please try again.${NC}"
-        create_admin_user
-        return
-    fi
-
-    (
-        cd /var/www/paymenter
-        php artisan p:user:create <<EOF
-$admin_email
-$admin_username
-$admin_password
-$admin_password_confirm
-y
-EOF
-    ) >/dev/null 2>&1 &
-    loading_animation $!
-    echo -e "${GREEN}✅ Admin user created successfully!${NC}"
+    cd /var/www/paymenter
+    php artisan p:user:create
+    echo -e "${GREEN}✅ Admin user creation completed!${NC}"
 }
 
 function uninstall_paymenter() {
@@ -219,8 +194,6 @@ function display_summary() {
     echo -e "${CYAN}🗄️ Database Name: ${WHITE}paymenter${NC}"
     echo -e "${CYAN}👤 Database User: ${WHITE}paymenter${NC}"
     echo -e "${CYAN}🔑 Database Password: ${WHITE}${DB_PASSWORD}${NC}"
-    echo -e "${CYAN}👤 Admin Email: ${WHITE}${admin_email}${NC}"
-    echo -e "${CYAN}👤 Admin Username: ${WHITE}${admin_username}${NC}"
     echo -e "${PURPLE}================================================================${NC}"
     echo -e "${CYAN}        Made with ❤️ by Nikhil for Darkhosting 2024         ${NC}"
     echo -e "${PURPLE}================================================================${NC}"
