@@ -12,7 +12,7 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
-WHITE='\033[0;37m'
+WHITE='\033[1;37m'
 NC='\033[0m'
 
 # Functions
@@ -20,20 +20,22 @@ function print_header() {
     clear
     echo -e "${PURPLE}================================================================${NC}"
     echo -e "${PURPLE}                                                                ${NC}"
-    echo -e "${PURPLE}██████╗  █████╗ ██████╗ ██╗  ██╗██╗  ██╗ ██████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗${NC}"
-    echo -e "${PURPLE}██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██║  ██║██╔═══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝${NC}"
-    echo -e "${PURPLE}██║  ██║███████║██████╔╝█████╔╝ ███████║██║   ██║███████╗   ██║   ██║██╔██╗ ██║██║  ███╗${NC}"
-    echo -e "${PURPLE}██║  ██║██╔══██║██╔══██╗██╔═██╗ ██╔══██║██║   ██║╚════██║   ██║   ██║██║╚██╗██║██║   ██║${NC}"
-    echo -e "${PURPLE}██████╔╝██║  ██║██║  ██║██║  ██╗██║  ██║╚██████╔╝███████║   ██║   ██║██║ ╚████║╚██████╔╝${NC}"
-    echo -e "${PURPLE}╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝${NC}"
+    echo -e "${WHITE}██████╗  █████╗ ██████╗ ██╗  ██╗██╗  ██╗ ██████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗ ${NC}"
+    echo -e "${WHITE}██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██║  ██║██╔═══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝ ${NC}"
+    echo -e "${CYAN}██║  ██║███████║██████╔╝█████╔╝ ███████║██║   ██║███████╗   ██║   ██║██╔██╗ ██║██║  ███╗${NC}"
+    echo -e "${CYAN}██║  ██║██╔══██║██╔══██╗██╔═██╗ ██╔══██║██║   ██║╚════██║   ██║   ██║██║╚██╗██║██║   ██║${NC}"
+    echo -e "${BLUE}██████╔╝██║  ██║██║  ██║██║  ██╗██║  ██║╚██████╔╝███████║   ██║   ██║██║ ╚████║╚██████╔╝${NC}"
+    echo -e "${BLUE}╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ${NC}"
     echo -e "${PURPLE}                                                                ${NC}"
     echo -e "${PURPLE}================================================================${NC}"
-    echo -e "${CYAN}                      🚀 Paymenter Installer 🚀                  ${NC}"
+    echo -e "${YELLOW}                   🚀 Paymenter Installer v1.0 🚀               ${NC}"
+    echo -e "${PURPLE}================================================================${NC}"
+    echo -e "${CYAN}                  Powered by Darkhosting © 2024                 ${NC}"
     echo -e "${PURPLE}================================================================${NC}"
 }
 
 function print_step() {
-    echo -e "\n${YELLOW}[$1/${TOTAL_STEPS}] ${GREEN}$2...${NC}"
+    echo -e "\n${YELLOW}[${WHITE}$1${YELLOW}/${WHITE}${TOTAL_STEPS}${YELLOW}] ${GREEN}$2...${NC}"
 }
 
 function loading_animation() {
@@ -166,7 +168,6 @@ function create_admin_user() {
     print_step 6 "Creating admin user"
     cd /var/www/paymenter
     php artisan p:user:create
-    echo -e "${GREEN}✅ Admin user creation completed!${NC}"
 }
 
 function uninstall_paymenter() {
@@ -195,7 +196,7 @@ function display_summary() {
     echo -e "${CYAN}👤 Database User: ${WHITE}paymenter${NC}"
     echo -e "${CYAN}🔑 Database Password: ${WHITE}${DB_PASSWORD}${NC}"
     echo -e "${PURPLE}================================================================${NC}"
-    echo -e "${CYAN}        Made with ❤️ by Nikhil for Darkhosting 2024         ${NC}"
+    echo -e "${YELLOW}        Made with ❤️ by Nikhil for Darkhosting 2024         ${NC}"
     echo -e "${PURPLE}================================================================${NC}"
 }
 
