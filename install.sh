@@ -10,7 +10,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Download the main script
-curl -o darkhosting-paymenter-installer.sh https://raw.githubusercontent.com/princekop/darkhosting-paymenter-installer/main/darkhosting-paymenter-installer.sh
+curl -o darkhosting-paymenter-installer.sh https://github.com/princekop/Paymenter-Script/blob/main/darkhosting-paymenter-installer.sh
 
 # Make it executable
 chmod +x darkhosting-paymenter-installer.sh
